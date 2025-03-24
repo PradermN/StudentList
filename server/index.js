@@ -14,7 +14,7 @@ app.use(express.json()); //req.body
 app.post("/todos", async(req, res) => {
     try {
         const {description} = req.body;
-        const newTodo = await pool.query("INSERT INTO todo (description) VALUES($1) RETURNING *", [description]);
+        const newTodo = await pool.query("INSERT INTO todo (description) VALUES($1) RETURNING *", [description]); //$1 ist placeholder for description
         res.json(newTodo.rows[0]);
     } catch (err) {
         console.error(err.message);
@@ -38,7 +38,7 @@ app.get("/todos", async(req, res) => {
 app.get("/todos/:id", async(req, res) => {
     try {
         const {id} = req.params;
-        const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id]);
+        const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id]); //$1 ist placeholder for id
         res.json(todo.rows[0]);
     } catch (err) {
         console.error(err.message);
