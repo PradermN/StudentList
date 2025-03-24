@@ -14,7 +14,7 @@ const InputTodo = () => {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-            console.log(response);
+            window.location = "/"; //refresh page and go to homepage
         } catch (err) {
             console.error(err.message);
         }
